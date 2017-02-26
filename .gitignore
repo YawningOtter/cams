@@ -1,0 +1,41 @@
+# Angular folder
+.bower.json
+angular-csp.css
+angular.min.js.gzip
+angular.min.js.map
+index.js
+README.md
+
+# Boostrap folder
+CHANGELOG.md
+dirlist.txt
+bootstrap-theme.css           
+bootstrap-theme.css.map
+bootstrap-theme.min.css       
+bootstrap-theme.min.css.map            
+bootstrap.css.map      
+bootstrap.min.css.map
+npm.js
+fonts/
+Gemfile
+Gemfile.lock
+grunt/
+Gruntfile.js
+ISSUE_TEMPLATE.md
+js/
+less/
+LICENSE
+nuget/
+package.js
+
+
+# JQuery
+external/
+src/
+AUTHORS.txt
+LICENSE.txt
+core.js
+jquery.min.map
+jquery.slim.js
+jquery.slim.min.js
+jquery.slim.min.map

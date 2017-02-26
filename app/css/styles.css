@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CAMS CSS Document */
+
+/* Global */
+body {
+	background-color: #eee;
+}
+
+.marketing .col-lg-4 {
+	text-align: center;
+}
+/* Header */
+/*#logo { display: inline-block; margin: 0 15px 0 0; }
+#logo h1 { font-family:Verdana, Geneva, sans-serif; font-style:oblique; color:#ee1003; font-weight: bolder; font-stretch: semi-condensed; margin:0;}
+.header-wrapper > header .header-cta-wrapper { margin: 0.5em 0;}
+.header-cta  li { float: left; padding-right: 15px; }*/
+
+
+.header-cta-wrapper .nav > li {
+	float: left;
+	margin-left: 10px;
+}
+
+/* Jumbotron */
+.jumbotron {
+	color: #ffffff;
+	text-shadow:0 1px 2px rgba(0, 0, 0, .6);
+	overflow: hidden;
+	position: relative;
+}
+
+.jumbotron img {
+	position: absolute;
+}
+.jumbotron .container > * {
+	position: relative;
+}
+
+
+/* Page Content 
+.top-parent-section-wrapper { margin: 0 15%; }*/
+
+/* Misc */
+.hidden {
+	overflow:hidden;
+	position:absolute;
+	width:1px;
+	height:1px;
+	top:-10px;
+	margin:0;
+}
+
+.clear {
+	clear:both;
+}
+
+.clearfix:after {
+	height: 0px;
+	width: 0px;
+	clear:both;
+	display:table;
+	content:'';
+}
+
+
+/* Media Queries */
+@media (min-width: 768px) {
+	.header-cta-wrapper .navbar-nav {
+		margin-right: 0;
+	}
+}
+
+@media (min-width: 1200px) {
+	.header-cta-wrapper {
+		position: absolute;
+		top: 10px;
+		right: 20px;
+	}
+}
