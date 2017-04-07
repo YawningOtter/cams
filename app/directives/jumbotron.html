@@ -1,0 +1,9 @@
+<section class="jumbotron" ng-repeat="jt in JumboTrons">
+	<img src="{{jt.imgUrl}}}" class="img-responsive clear" alt="{{jt.imgAlt}}">
+	<div class="container">
+		<h1 class="hidden">Hero Tag Line</h1>
+		<h2>{{jt.title}}</h2>
+		<p>{{jt.snippet}}</p>
+		<p><a class="btn btn-primary btn-lg" href="#{{jt.ctaUrl}}" role="button">{{jt.ctaUrlName}}</a></p>
+	</div>
+</section>
