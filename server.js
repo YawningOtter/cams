@@ -1,9 +1,23 @@
 var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 
-var server = express();
-server.use(express.static(__dirname + '/app'))
+var config = require('./config/config');
 
-var port = 10001;
-server.listen(port,function() {
+// Middleware
+app.use(express.static(__dirname + '/app'))	// To serve up static files
+app.use(bodyParser.json());					// To be able to post json objects
+
+
+// Appends code in mongoose which connects to mongoose
+require('./config/mongoose')(config);
+
+// Appends code in routes
+require('./routes/routes')(app);
+require('./routes/rteJumboTron')(app);
+require('./routes/rteAdmin')(app);
+
+var port = 2345;
+app.listen(port,function() {
 	console.log('server listening on port ' + port);
 });
