@@ -8,14 +8,15 @@ module.exports = function(app) {
 	
 	var rtrJumboTron = express.Router();
 
-	rtrJumboTron.route('/')	
+	// Returns all the Jumbo Tron records
+	rtrJumboTron.route('/jumbotrons')	
 	.get(function(req, res) {			// Retrieve the Jumbo Tron item from collection
-		JumboTron.getJumboTron(function(err, pJumboTron) {
+		JumboTron.getJumboTrons(function(err, resJumboTron) {
 			if(err) {
 				res.send({error:err});
 			}
-			res.json(pJumboTron);
-		});	
+			res.json(resJumboTron);
+		});
 	})
 	.post(function(req, res) {			// Create a new Jumbo Tron item in collection
 		var newJTObj = new JumboTron({
@@ -24,39 +25,54 @@ module.exports = function(app) {
 			ctaUrlName:req.body.ctaUrlName,
 			ctaUrl:req.body.ctaUrl,
 			imgUrl:req.body.imgUrl,
-			imgAlt:req.body.imgAlt
+			imgAlt:req.body.imgAlt,
+			status:req.body.status
 		});
 
-		JumboTron.addJumboTron(newJTObj,function(err, pNewJT) {
+		JumboTron.addJumboTron(newJTObj,function(err, resNewJT) {
 			if(err) {
 				res.send({error:err});
 			}
-			res.json(pNewJT);
+			res.json(resNewJT);
 		});	
 	});
 
-
-	rtrJumboTron.route('/:id')
-	.delete(function(req, res) {
-		var newId = req.params._id;
-
-		JumboTron.deleteJumboTron(newId, function(err, pJumboTron) {
+	// Returns the latest Jumbo Tron record
+	rtrJumboTron.route('/jumbotrons/filter')
+	.get(function(req, res) {			// Retrieve the Jumbo Tron item from collection
+		JumboTron.getJumboTronsByFilter(function(err, resJumboTron) {
 			if(err) {
 				res.send({error:err});
 			}
-			res.json(pJumboTron);
-		});	
-	})
+			res.json(resJumboTron);
+		},
+		{status: 'ACTIVE'});		// sort on created_at field for the latest record
+	});
+
+	// Returns the latest Jumbo Tron record
+	rtrJumboTron.route('/jumbotrons/latest')
+	.get(function(req, res) {			// Retrieve the Jumbo Tron item from collection
+		JumboTron.getLastestJumboTron(function(err, resJumboTron) {
+			if(err) {
+				res.send({error:err});
+			}
+			res.json(resJumboTron);
+		},
+		{'created_at': -1},		// sort on created_at field for the latest record
+		1);		// limit or records
+	});
+
+	rtrJumboTron.route('/jumbotrons/:_id')	
 	.get(function(req, res) {			// Retrieve the Jumbo Tron item from collection by Id
 		//return a specific document identified by id paramter
-		var id = req.params.id;
+		var id = req.params._id;
 
 		//looks through collection and gets the specified obj by id
-		JumboTron.getJumboTronById(id,function(err, pJumboTron) {
+		JumboTron.getJumboTronById(id,function(err, resJumboTron) {
 			if(err) {
 				res.send({error:err});
 			}
-			res.json(pJumboTron);
+			res.json(resJumboTron);
 		});
 	})
 	.post(function(req, res) {			// Create a new Jumbo Tron item in collection by Id
@@ -66,14 +82,15 @@ module.exports = function(app) {
 			ctaUrlName:req.body.ctaUrlName,
 			ctaUrl:req.body.ctaUrl,
 			imgUrl:req.body.imgUrl,
-			imgAlt:req.body.imgAlt
+			imgAlt:req.body.imgAlt,
+			status:req.body.status,
 		});
 
-		JumboTron.addJumboTron(newJTObj,function(err, pNewJT) {
+		JumboTron.addJumboTron(newJTObj,function(err, resNewJT) {
 			if(err) {
 				res.send({error:err});
 			}
-			res.json(pNewJT);
+			res.json(resNewJT);
 		});
 	})
 	.put(function(req, res) {			// Update a Jumbo Tron item in collection by Id
@@ -84,16 +101,28 @@ module.exports = function(app) {
 			ctaUrlName:req.body.ctaUrlName,
 			ctaUrl:req.body.ctaUrl,
 			imgUrl:req.body.imgUrl,
-			imgAlt:req.body.imgAlt
+			imgAlt:req.body.imgAlt,
+			status:req.body.status,
+			updatedDate:req.body.updatedDate
 		});
 
-		JumboTron.updateJumboTron(id, newJumboTronObj, {}, function(err, pJumboTron) {
+		JumboTron.updateJumboTron(id, newJumboTronObj, {}, function(err, resJumboTron) {
 			if(err) {
 				res.send({error:err});
 			}
-			res.json(pJumboTron);		// send the new updated obj back
+			res.json(resJumboTron);		// send the new updated obj back
 		});
+	})
+	.delete(function(req, res) {
+		var newId = req.params._id;
+
+		JumboTron.removeJumboTron(newId, function(err, resJumboTron) {
+			if(err) {
+				res.send({error:err});
+			}
+			res.json(resJumboTron);
+		});	
 	});
 
-	app.use('/api/jumbotron', rtrJumboTron);
+	app.use('/api', rtrJumboTron);
 }

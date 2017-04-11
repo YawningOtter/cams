@@ -10,7 +10,7 @@ var srvJumboTron = angular.module('srvJumboTron', ['ngResource']);
 	});
   }]);*/
 
-srvJumboTron.factory('GetJumboTron', ['$resource',
+srvJumboTron.factory('getJumboTron', ['$resource',
   function($resource){
    	return $resource('/api/jumbotron/', {}, {
    		query: {

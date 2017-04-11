@@ -1,0 +1,22 @@
+<a class="btn btn-link" href="#/admin">Go Back</a>
+
+<div class="panel panel-default" ng-init="getSlides()">
+	<div class="panel-heading">
+	    <h3 class="panel-title">Carousel Slide Versions</h3>
+	    <!-- <a class="btn btn btn-default" href="#/admin/slides/add/">Add</a> -->
+	</div>
+
+	<div class="panel-body" ng-repeat="slide in mdlSlides">
+	    <div class="row">
+    		<h4>{{slide.name}} - {{slide.status}}</h4>
+    		<p>Slide Id - {{slide._id}}</p>
+			<div class="slide">
+			    <img src="{{slide.imgUrl}}" alt="{{slide.imgAlt}}">
+		    	<p>{{slide.caption}}</p>
+			</div>
+				
+			<a class="btn btn btn-default btn-xs" href="#/admin/slides/details/{{slide._id}}">Edit</a>
+			<a class="btn btn btn-default btn-xs" href="#" ng-click="removeSlide(slide._id)">Delete</a>
+		</div>
+	</div>
+</div>

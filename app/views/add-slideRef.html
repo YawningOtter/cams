@@ -1,0 +1,40 @@
+<a class="btn btn-link" href="#/admin/carousels">Go Back</a>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add New Slide to Carousel</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+      <form ng-submit="addSlideRef()">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" ng-model="slide.name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label>Caption</label>
+          <input type="text" class="form-control" ng-model="slide.caption" placeholder="Caption">
+        </div>
+        <div class="form-group">
+          <label>Image Url</label>
+          <input type="text" class="form-control" ng-model="slide.imgUrl" placeholder="Image Url">
+        </div> 
+        <div class="form-group">
+          <label>Image Alternative Text</label>
+          <input type="text" class="form-control" ng-model="slide.imgAlt" placeholder="Image Alt">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <input type="text" class="form-control" ng-model="slide.status" placeholder="Status">
+        </div>
+        <div class="form-group">
+          <label>Order</label>
+          <input type="text" class="form-control" ng-model="slide.order" placeholder="Order">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>

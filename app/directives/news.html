@@ -1,6 +1,9 @@
 <section class="content">
 	<div class="container">
 		<h1>News</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ipsum sed lorem vehicula cursus. Proin faucibus venenatis libero, sit amet porta est rutrum vitae. Nam dapibus tortor nibh, eget tristique dui dapibus a. Vivamus risus risus, laoreet quis facilisis accumsan, imperdiet eu sapien.</p>
-	<div class="container">
+		<div ng-repeat="n in mainModel">
+			<h2>{{n.title}} - {{n.createDate}}</h2>
+			<p>{{n.snippet}}</p>
+		</div>
+	</div>
 </section>

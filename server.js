@@ -14,8 +14,12 @@ require('./config/mongoose')(config);
 
 // Appends code in routes
 require('./routes/routes')(app);
-require('./routes/rteJumboTron')(app);
 require('./routes/rteAdmin')(app);
+require('./routes/rteJumboTron')(app);
+require('./routes/rteCarousel')(app);
+require('./routes/rteSlide')(app);
+require('./routes/rteMarket')(app);
+require('./routes/rteNews')(app);
 
 var port = 2345;
 app.listen(port,function() {

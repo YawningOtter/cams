@@ -1,0 +1,25 @@
+<a class="btn btn-link" href="#/admin">Go Back</a>
+
+<div class="panel panel-default" ng-init="getJumboTrons()">
+	<div class="panel-heading">
+	    <h3 class="panel-title">Jumbo Tron Versions</h3>
+	    <a class="btn btn btn-default" href="#/admin/jumbotrons/add">Add</a>
+	</div>
+	<div class="panel-body" ng-repeat="jt in mdlJumboTrons">
+	    <div class="row">
+    		<h4>{{jt.status}}</h4>
+	    	<section class="jumbotron">
+				<img src="{{jt.imgUrl}}" class="img-responsive clear" alt="{{jt.imgAlt}}">
+				<div class="container">
+			    	<h1 class="hidden">Hero Tag Line</h1>
+			    	<h2>{{jt.title}}</h2>
+			    	<p>{{jt.snippet}}</p>
+			    	<p><a class="btn btn-primary btn-lg" href="#{{jt.ctaUrl}}" role="button">{{jt.ctaUrlName}}</a></p>
+			    	
+				</div>
+			</section>
+			<a class="btn btn btn-default btn-xs" href="#/admin/jumbotrons/details/{{jt._id}}">Edit</a>
+			<a class="btn btn btn-default btn-xs" href="#" ng-click="removeJumboTron(jt._id)">Delete</a>
+		</div>
+	</div>
+</div>

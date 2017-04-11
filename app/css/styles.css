@@ -62,6 +62,15 @@ body {
 	content:'';
 }
 
+.edit-list li {
+	list-style: none;
+}
+
+/* Admin Content  */
+.slide img {
+	width: 100%;
+}
+
 
 /* Media Queries */
 @media (min-width: 768px) {

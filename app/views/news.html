@@ -1,0 +1,24 @@
+<a class="btn btn-link" href="#/admin">Go Back</a>
+
+<div class="panel panel-default" ng-init="getNews()">
+	<div class="panel-heading">
+	    <h3 class="panel-title">News Versions</h3>
+	    <a class="btn btn btn-default" href="#/admin/news/add">Add</a>
+	</div>
+
+	<div class="panel-body" ng-repeat="n in mdlNews">
+	    <div class="row">
+
+	    	<section class="content">
+				<div class="container">
+		    		<h4>{{n.title}} - {{n.status}}</h4>
+		    		<p>{{n.createDate}}</p>
+				    <p>{{n.snippet}}</p>
+				</div>
+			</section>
+						
+			<a class="btn btn btn-default btn-xs" href="#/admin/news/details/{{n._id}}">Edit</a>
+			<a class="btn btn btn-default btn-xs" href="#" ng-click="removeNews(n._id)">Delete</a>
+		</div>
+	</div>
+</div>

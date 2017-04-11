@@ -1,0 +1,54 @@
+<a class="btn btn-link" href="#/admin">Go Back</a>
+
+<div class="panel panel-default" ng-init="getCarouselPopulateSlides()">
+	<div class="panel-heading">
+	    <h3 class="panel-title">Carousel Versions</h3>
+	    <a class="btn btn btn-default" href="#/admin/carousels/add">Add</a>
+	</div>
+
+	<div class="panel-body">
+	    <div class="row" ng-repeat="caro in mdlCarouselSlides">	    	
+    		<h4>{{caro.status}}</h4>
+    		<p>Carousel Id - {{caro._id}}</p>
+    		<p>Carousel Slide Ids - 
+    			<span ng-repeat="sl in caro.slide">
+	    			<span>{{sl._id}}</span>
+	    		</span>
+    		</p>
+			<section id="slider">
+				<h1 class="hidden">{{caro.name}}</h1>
+				<div id="{{caro.name}}" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#{{caro.name}}" data-slide-to="{{sl.order}}" class="" ng-class="{active:$first}" ng-repeat="sl in caro.slide"></li>
+				  </ol>
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				    <div class="item" ng-class="{active:$first}" ng-repeat="sl in caro.slide">
+				    <!-- <div class="item active"> -->
+				      <img src="{{sl.imgUrl}}" alt="{{sl.imgUrlAlt}}">
+				      <div class="carousel-caption">
+				        {{sl.caption}}
+				      </div>
+				    </div>
+				  </div>
+
+				  <!-- Controls -->
+				  <span class="left carousel-control" data-target="#{{caro.name}}" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </span>
+				  <span class="right carousel-control" data-target="#{{caro.name}}" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </span>
+				</div>
+			</section>
+
+			<a class="btn btn btn-default btn-xs" href="#/admin/carousels/details/{{caro._id}}">Edit</a>
+			<a class="btn btn btn-default btn-xs" href="#" ng-click="removeCarousel(caro._id)">Delete</a>
+			
+		</div>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<a class="btn btn-link" href="#/admin">Go Back</a>
+
+<div class="panel panel-default" ng-init="getMarkets()">
+	<div class="panel-heading">
+	    <h3 class="panel-title">Marketing Versions</h3>
+	    <a class="btn btn btn-default" href="#/admin/markets/add">Add</a>
+	</div>
+
+	<div class="panel-body" ng-repeat="mar in mdlMarkets">
+	    <div class="row">
+
+	    	<section class="container marketing">
+				<div class="row">
+			    <div class="col-lg-4">
+			    	<h4>{{mar.title}} - {{mar.status}}</h4>
+			      	<img class="img-circle" src="{{mar.imgUrl}}" alt="{{mar.imgAlt}}" width="140" height="140">			      
+			     	<p>{{mar.snippet}}</p>
+			      	<p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+			    </div><!-- /.col-lg-4 -->
+			</section>
+				
+			<a class="btn btn btn-default btn-xs" href="#/admin/markets/details/{{mar._id}}">Edit</a>
+			<a class="btn btn btn-default btn-xs" href="#" ng-click="removeMarket(mar._id)">Delete</a>
+		</div>
+	</div>
+</div>
