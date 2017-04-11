@@ -12,6 +12,12 @@
     "body-parser": "^1.17.1",
     "express": "^4.13.3",
     "mongodb": "^2.2.24",
-    "mongoose": "^4.9.2"
+    "mongoose": "^4.9.2",
+  },
+   "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "http-server -a 0.0.0.0 -p 2345"
   }
 }
