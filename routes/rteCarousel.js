@@ -57,8 +57,8 @@ module.exports = function(app) {
 
 		var pId = req.params._id;
 
-		// Finds the carousel by if and adds a new slide to it
-		Carousel.findOne({_id:pId}, function(err, caro) {
+		// Finds the carousel by iD and adds a new slide to it
+		/*Carousel.findOne({_id:pId}, function(err, caro) {
 			var newSlideObj = new Slide({
 				name: req.body.name,
 				carousel: pId,
@@ -79,16 +79,47 @@ module.exports = function(app) {
 				caro.save();
 				res.send(caro.slide);
 
-			});			
+			});
 		});
 
-		/*Carousel.addSlideRef(pId,function(err, resCarousel) {
+		Carousel.addSlideRef(pId,function(err, resCarousel) {
+
+
 			if(err) {
 				res.send({error:err});
 			}
 
 			res.json(resCarousel);
 		});*/
+
+		Carousel.addSlideRef(pId, function(err, caro) {
+			var newSlideObj = new Slide({
+				name: req.body.name,
+				carousel: pId,
+				caption: req.body.caption,		
+				imgUrl: req.body.imgUrl,
+				imgAlt: req.body.imgAlt,
+				order: req.body.order,
+				status: req.body.status
+			});
+
+			// saves to collection
+			newSlideObj.save(function(err, pSlide) {
+				if(err) {
+					res.send({error:err});
+				}
+
+				caro.slide.push(pSlide._id);
+				caro.save();
+				res.json(caro.slide);
+
+			});
+
+			if(err) {
+				res.send({error:err});
+			}
+		});
+
 	});
 
 	// Returns the latest Jumbo Tron record

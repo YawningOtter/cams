@@ -107,10 +107,11 @@ module.exports.updateCarousel = function(pId, pNewCarouselObj, pOptions, pCallba
  * @param: pId = is the unique id of the item in the collection
  * @param: pNewCarouselObj = is an old jumbo tron item in collection that has id = pId
  */
-module.exports.addSlideRef = function(pId, pCarouselObj, pOptions, pCallback) {
+module.exports.addSlideRef = function(pId, pCallback) {
 	var query = {_id: pId};
 	
-	Carousel.findOneAndUpdate(query, updateObj, pOptions, pCallback);
+	Carousel.findOne(query, pCallback);
+	//Carousel.findOneAndUpdate(query, updateObj, pOptions, pCallback);
 }
 
 /* Delete carousel function
